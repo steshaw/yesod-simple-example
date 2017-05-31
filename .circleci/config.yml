@@ -30,7 +30,7 @@ jobs:
             date +%s
             stat Makefile
             stat -c%Y Makefile
-            git log -1 Makefile
+            git log --no-pager -1 Makefile
             make
 
       - run:
