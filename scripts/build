@@ -1,7 +1,25 @@
 #!/usr/bin/env bash
 
-touch .static.files && stack build "$@"
+set -euxo pipefail
 
-function workingBuild() {
-  ./scripts/gen-static-files && stack build "$@"
+function broken() {
+  touch .static.files
+  touch Settings/StaticFiles.hs
+  stack build "$@"
 }
+
+function working() {
+  ./scripts/gen-static-files
+  stack build "$@"
+}
+
+type=$1; shift
+
+case $type in
+  working)
+    working "$@"
+    ;;
+  broken)
+    broken "$@"
+    ;;
+esac
