@@ -18,7 +18,7 @@ jobs:
 
       - restore_cache:
           keys:
-            - stack.packages.{{checksum "stack.yaml"}}.{{checksum "yesod-simple-example.cabal"}}
+            - stack.packages.{{checksum "stack.yaml"}}.{{checksum "package.yaml"}}
             - stack.packages
 
       - restore_cache:
@@ -47,7 +47,7 @@ jobs:
             - .stack-work/dist
 
       - save_cache:
-          key: stack.packages.{{checksum "stack.yaml"}}.{{checksum "yesod-simple-example.cabal"}}
+          key: stack.packages.{{checksum "stack.yaml"}}.{{checksum "package.yaml"}}
           paths:
             - ~/.stack
             - .stack-work/install
