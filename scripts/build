@@ -4,7 +4,7 @@ set -euxo pipefail
 
 function broken() {
   touch .static.files
-  touch Settings/StaticFiles.hs
+#  touch Settings/StaticFiles.hs
   stack build "$@"
 }
 
