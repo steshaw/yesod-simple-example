@@ -25,9 +25,11 @@ jobs:
       - run:
           name: Time skew?
           command: |
+            set -x
             date
             date +%s
             stat Makefile
+            stat +%Y Makefile
             make
 
       - run:
