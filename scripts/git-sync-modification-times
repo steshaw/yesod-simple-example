@@ -3,5 +3,5 @@
 set -euo pipefail
 
 git ls-files |
-  parallel --no-notice git --no-pager log -1 "--pretty=tformat:'%cd {}'" --date=format:'%s' {} |
+  parallel --no-notice git --no-pager log -1 "--pretty=tformat:'%ad {}'" --date=format:'%s' {} |
   parallel --no-notice --colsep ' ' touch --date=@{1} {2}
