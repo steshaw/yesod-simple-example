@@ -18,8 +18,8 @@ jobs:
 
       - restore_cache:
           keys:
-            dot-stack-{{checksum "stack.yaml"}}-{{checksum "yesod-simple-example.cabal"}}
-            dot-stack
+            - dot-stack-{{checksum "stack.yaml"}}-{{checksum "yesod-simple-example.cabal"}}
+            - dot-stack
 
       - restore_cache:
           keys:
