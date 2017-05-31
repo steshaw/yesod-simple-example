@@ -30,7 +30,7 @@ jobs:
       - run:
           name: Build
           command: |
-            stack --system-ghc build
+            scripts/build --system-ghc
 
       - save_cache:
           key: stack-{{.Branch}}-{{.Revision}}

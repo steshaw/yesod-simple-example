@@ -3,5 +3,5 @@
 touch .static.files && stack build
 
 function workingBuild() {
-  ./scripts/gen-static-files && stack build
+  ./scripts/gen-static-files && stack build "$@"
 }
