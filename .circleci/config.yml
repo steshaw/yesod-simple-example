@@ -30,6 +30,9 @@ jobs:
           name: Build
           command: |
             scripts/build broken
+            set -x
+            du -hs ~/.stack
+            du -hs .stack-work
 
       - save_cache:
           key: stack-{{.Branch}}-{{.Revision}}
