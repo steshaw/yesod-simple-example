@@ -29,7 +29,7 @@ jobs:
             date
             date +%s
             stat Makefile
-            stat +%Y Makefile
+            stat -c%Y Makefile
             git log -1 Makefile
             make
 
