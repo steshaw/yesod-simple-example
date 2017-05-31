@@ -18,9 +18,14 @@ jobs:
 
       - restore_cache:
           keys:
-            - stack-{{.Branch}}-{{.Revision}}
-            - stack-{{.Branch}}
-            - stack-master
+            dot-stack-{{checksum "stack.yaml"}}-{{checksum "yesod-simple-example.cabal"}}
+            dot-stack
+
+      - restore_cache:
+          keys:
+            - dot-stack-work-{{.Branch}}-{{.Revision}}
+            - dot-stack-work-{{.Branch}}
+            - dot-stack-work-master
 
       - run:
           name: Time skew?
@@ -35,7 +40,11 @@ jobs:
             du -hs .stack-work
 
       - save_cache:
-          key: stack-{{.Branch}}-{{.Revision}}
+          key: dot-stack-work-{{.Branch}}-{{.Revision}}
+          paths:
+            - .stack-work
+
+      - save_cache:
+          key: dot-stack-{{checksum "stack.yaml"}}-{{checksum "yesod-simple-example.cabal"}}
           paths:
             - ~/.stack
-            - .stack-work
