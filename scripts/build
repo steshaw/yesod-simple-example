@@ -2,8 +2,6 @@
 
 set -euxo pipefail
 
-echo "bash version = $(bash --version)"
-
 function broken() {
 #  touch .static.files
   touch Settings/StaticFiles.hs
