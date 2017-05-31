@@ -28,7 +28,7 @@ getHomeR = do
         setTitle "Welcome To Yesod!"
         addScript $ StaticR js_fred_js
         addScript $ StaticR js_bar_js
-        addScript $ StaticR wibble_js
+        addScript $ StaticR wobble_js
         $(widgetFile "homepage")
 
 postHomeR :: Handler Html
