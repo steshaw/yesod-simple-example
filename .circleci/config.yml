@@ -25,6 +25,7 @@ jobs:
       - run:
           name: Build
           command: |
+            make
             scripts/build broken --system-ghc
 
       - save_cache:
