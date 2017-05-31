@@ -19,7 +19,7 @@ library
                      Import.NoFoundation
                      Settings
                      Settings.StaticFiles
-                     Settings.TH
+--                     Settings.TH
                      Handler.Common
                      Handler.Home
                      Handler.Comment
