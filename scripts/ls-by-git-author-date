@@ -1,5 +1,5 @@
 #!/bin/bash
 
 git ls-files |
-  parallel --no-notice git --no-pager log -1 "--pretty='%ad {}'" --date=format:'%s' {} |
+  parallel --no-notice git --no-pager log -1 "--pretty='%ad {}'" --date=unix {} |
   sort -rn
