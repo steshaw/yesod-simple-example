@@ -5,7 +5,7 @@ set -euxo pipefail
 function broken() {
 #  touch .static.files
 #  touch Settings/StaticFiles.hs
-  stack build "$@"
+  stack build "$@" || echo "\n\nFIRST BUILD WAS BROKEN!!!!\n\n"
   touch Settings/StaticFiles.hs
   stack build "$@"
 }
