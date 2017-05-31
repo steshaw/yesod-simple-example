@@ -1,6 +1,6 @@
 module Settings.TH where
 
-import Control.Applicative
+import Prelude
 import Language.Haskell.TH.Syntax
 import System.Directory
 import System.FilePath
@@ -18,11 +18,11 @@ import System.FilePath
 --
 addDependentFileRelative :: FilePath -> Q [Dec]
 addDependentFileRelative relativeFile = do
-    currentFilename <- loc_filename <$> location
-    pwd             <- runIO getCurrentDirectory
-
-    let invocationRelativePath = takeDirectory (pwd </> currentFilename) </> relativeFile
-
-    addDependentFile invocationRelativePath
-
-    returnQ []
+  currentFileName <- loc_filename <$> location
+  runIO $ print ("currentFileName" :: String, currentFileName)
+  pwd <- runIO getCurrentDirectory
+  runIO $ print ("pwd" :: String, pwd)
+  let path = takeDirectory (pwd </> currentFileName) </> relativeFile
+  canonicalPath <- runIO $ canonicalizePath path
+  addDependentFile canonicalPath
+  returnQ []
