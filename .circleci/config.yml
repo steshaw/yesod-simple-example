@@ -34,7 +34,7 @@ jobs:
       - run:
           name: Build
           command: |
-            scripts/build broken
+            scripts/build
 
       - save_cache:
           key: stack.work.dist.{{.Branch}}.{{.Revision}}

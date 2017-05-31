@@ -2,24 +2,5 @@
 
 set -euxo pipefail
 
-function broken() {
-#  touch .static.files
-#  touch Settings/StaticFiles.hs
-  stack build "$@"
-}
-
-function working() {
-  ./scripts/gen-static-files
-  stack build "$@"
-}
-
-type=$1; shift
-
-case $type in
-  working)
-    working "$@"
-    ;;
-  broken)
-    broken "$@"
-    ;;
-esac
+./scripts/gen-static-files
+stack build "$@"
