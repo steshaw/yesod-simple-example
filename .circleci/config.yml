@@ -24,14 +24,7 @@ jobs:
 
       - run:
           name: Time skew?
-          command: |
-            set -x
-            date
-            date +%s
-            stat Makefile
-            stat -c%Y Makefile
-            git log --no-pager -1 Makefile
-            make
+          command: scripts/skew
 
       - run:
           name: Build
