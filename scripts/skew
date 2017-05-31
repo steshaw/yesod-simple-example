@@ -17,8 +17,8 @@ git --no-pager log -1 --pretty=tformat:'%ad Makefile' --date=format:'%s' Makefil
 echo
 git --no-pager log -1 --pretty=tformat:'%ad Makefile' --date=iso Makefile
 echo
-git --no-pager log -1 '--pretty=tformat:%ad Makefile' --date=unix Makefile
-echo
 git --version
+echo
+git --no-pager log -1 '--pretty=tformat:%ad Makefile' --date=unix Makefile || true
 echo
 make
