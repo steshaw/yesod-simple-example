@@ -26,7 +26,7 @@ getHomeR = do
         let (commentFormId, commentTextareaId, commentListId) = commentIds
         aDomId <- newIdent
         setTitle "Welcome To Yesod!"
-        addScript $ StaticR js_foobar_js
+        addScript $ StaticR js_foo_js
         addScript $ StaticR js_bar_js
         $(widgetFile "homepage")
 
