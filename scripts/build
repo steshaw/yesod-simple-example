@@ -6,8 +6,6 @@ echo "bash version = $(bash --version)"
 
 function broken() {
 #  touch .static.files
-#  touch Settings/StaticFiles.hs
-  stack build "$@" || echo -e "\n\nFIRST BUILD WAS BROKEN!!!!\n\n"
   touch Settings/StaticFiles.hs
   stack build "$@"
 }
