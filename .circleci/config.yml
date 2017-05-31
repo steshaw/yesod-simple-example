@@ -37,7 +37,9 @@ jobs:
             scripts/build broken
             set -x
             du -hs ~/.stack
+            du -hs ~/.stack/*
             du -hs .stack-work
+            du -hs .stack-work/*
 
       - save_cache:
           key: stack.work.dist.{{.Branch}}.{{.Revision}}
