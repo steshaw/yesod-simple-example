@@ -1,5 +1,7 @@
 module Settings.TH where
 
+{-
+
 import Prelude
 import Language.Haskell.TH.Syntax
 import System.Directory
@@ -26,3 +28,5 @@ addDependentFileRelative relativeFile = do
   canonicalPath <- runIO $ canonicalizePath path
   addDependentFile canonicalPath
   returnQ []
+
+-}
