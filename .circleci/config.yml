@@ -1,8 +1,6 @@
 version: 2
 jobs:
-
   build:
-
     docker:
       - image: steshaw/bt-build-base:0.1.19
 
@@ -14,7 +12,9 @@ jobs:
 
       - run:
           name: Sync file modification times with Git commit times
-          command: scripts/git-sync-modification-times
+          command: |
+            scripts/git-sync-modification-times
+            scripts/confirm-times-synchronised
 
       - restore_cache:
           keys:
@@ -23,9 +23,16 @@ jobs:
             - stack-master
 
       - run:
+          name: Time skew?
+          command: |
+            date
+            date +%s
+            stat Makefile
+            make
+
+      - run:
           name: Build
           command: |
-            make
             scripts/build broken --system-ghc
 
       - save_cache:

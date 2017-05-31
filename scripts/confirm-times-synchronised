@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -euxo pipefail
+
+scripts/ls-by-file-modification-time >ls.files.out
+scripts/ls-by-git-author-date >ls.git.out
+
+diff ls.files.out ls.git.out
