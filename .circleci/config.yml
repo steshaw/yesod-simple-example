@@ -23,17 +23,14 @@ jobs:
             - stack-master
 
       - run:
-          name: stack upgrade
+          name: Stack Version
           command: |
             which stack
             stack --version
-            stack upgrade
 
       - run:
           name: Build
           command: |
-            which stack
-            stack --version
             scripts/build broken --system-ghc
 
       - save_cache:
