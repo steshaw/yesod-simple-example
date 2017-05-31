@@ -1,0 +1,39 @@
+version: 2
+jobs:
+
+  build:
+
+    docker:
+      - image: fpco/stack-build:lts-8.5
+
+    working_directory: /app
+
+    steps:
+
+      - checkout
+
+      - restore_cache:
+          keys:
+            - stack-{{.Branch}}-{{.Revision}}
+            - stack-{{.Branch}}
+            - stack-master
+
+      - run:
+          name: stack upgrade
+          command: |
+            which stack
+            stack --version
+            stack upgrade
+            which stack
+            stack --version
+
+      - run:
+          name: Build
+          command: |
+            stack build
+
+      - save_cache:
+          key: stack-{{.Branch}}-{{.Revision}}
+          paths:
+            - ~/.stack
+            - .stack-work
