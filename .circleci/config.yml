@@ -24,12 +24,12 @@ jobs:
             which stack
             stack --version
             stack upgrade
-            which stack
-            stack --version
 
       - run:
           name: Build
           command: |
+            which stack
+            stack --version
             scripts/build broken --system-ghc
 
       - save_cache:
