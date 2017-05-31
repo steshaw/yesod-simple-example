@@ -1,4 +1,5 @@
 -- XXX: Force recompilation
+--
 
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 
