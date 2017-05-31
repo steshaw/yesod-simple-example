@@ -1,6 +1,7 @@
 module Settings.StaticFiles where
 
-import Settings     (appStaticDir, compileTimeAppSettings)
+import Settings (appStaticDir, compileTimeAppSettings)
+import Settings.TH
 import Yesod.Static (staticFiles)
 
 -- This generates easy references to files in the static directory at compile time,
@@ -16,3 +17,5 @@ import Yesod.Static (staticFiles)
 --
 --     StaticFile ["js", "script.js"] []
 staticFiles (appStaticDir compileTimeAppSettings)
+
+$(addDependentFileRelative "../static.files")

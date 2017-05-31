@@ -19,6 +19,7 @@ library
                      Import.NoFoundation
                      Settings
                      Settings.StaticFiles
+                     Settings.TH
                      Handler.Common
                      Handler.Home
                      Handler.Comment
@@ -87,6 +88,7 @@ library
                  , time
                  , case-insensitive
                  , wai
+                 , filepath
 
 executable         yesod-simple-example
     if flag(library-only)
