@@ -11,7 +11,7 @@ jobs:
       - checkout
 
       - run:
-          name: Sync file modification times with Git commit times
+          name: Sync file modification times with Git author dates
           command: |
             scripts/git-sync-modification-times
             scripts/confirm-times-synchronised
@@ -28,7 +28,7 @@ jobs:
             - stack.work.dist.master
 
       - run:
-          name: Time skew?
+          name: Clock skew?
           command: scripts/skew
 
       - run:
