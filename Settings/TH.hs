@@ -14,15 +14,13 @@ import System.FilePath
 --
 -- >$(addDependentFileRelative "MyDependency.txt")
 --
--- From https://stackoverflow.com/a/16163949/482382
+-- Adapted from <https://stackoverflow.com/a/16163949/482382>.
 --
 addDependentFileRelative :: FilePath -> Q [Dec]
 addDependentFileRelative relativeFile = do
   currentFileName <- loc_filename <$> location
-  runIO $ print ("currentFileName" :: String, currentFileName)
-  pwd <- runIO getCurrentDirectory
-  runIO $ print ("pwd" :: String, pwd)
-  let path = takeDirectory (pwd </> currentFileName) </> relativeFile
+  currentFileAbsolute <- runIO $ makeAbsolute currentFileName
+  let path = takeDirectory currentFileAbsolute </> relativeFile
   canonicalPath <- runIO $ canonicalizePath path
   addDependentFile canonicalPath
   returnQ []
